@@ -2,6 +2,11 @@ package main
 
 import (
 	"log/slog"
+	"net/http"
+	"os"
+	"time"
+
+	"example.com/mod/api"
 )
 
 func main() {
@@ -14,7 +19,7 @@ func main() {
 }
 
 func run() error {
-	apiHandler := api.NewHandler()
+	apiHandler := api.NewHandler(make(map[string]string))
 
 	srv := http.Server{
 		ReadTimeout:  10 * time.Second,
