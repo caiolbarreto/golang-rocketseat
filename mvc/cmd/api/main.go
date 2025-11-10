@@ -4,6 +4,7 @@ import (
 	"log"
 
 	bookController "library-mvc/internal/books/controllers"
+	loansController "library-mvc/internal/loans/controllers"
 	userController "library-mvc/internal/users/controllers"
 
 	"github.com/gin-gonic/gin"
@@ -11,6 +12,9 @@ import (
 
 func main() {
 	router := gin.Default()
+
+	loansController := loansController.NewLoanController()
+	loansController.RegisterRoutes(router)
 
 	booksController := bookController.NewBookController()
 	booksController.RegisterRoutes(router)
